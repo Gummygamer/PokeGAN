@@ -72,6 +72,7 @@ def main():
         device=device,
         batch_size=BATCH_SIZE,
         )
+    gan.generator.load_state_dict(torch.load(os.path.join("results","checkpoints","gen.00999.pt")
     start = time.time()
     for i in range(EPOCHS):
         while True:
