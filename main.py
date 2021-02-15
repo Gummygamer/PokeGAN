@@ -104,7 +104,7 @@ def main():
                 os.path.join("results", "checkpoints", f"dis_l.{i:05d}.pt"))
             torch.save(
                 gan.encoder.state_dict(),
-                os.path.join("results", "checkpoints", f"dis_l.{i:05d}.pt"))
+                os.path.join("results", "checkpoints", f"enc.{i:05d}.pt"))
         save_images(gan, test_noise,
             os.path.join("results", "generated", f"gen.{i:04d}.png"))
 
