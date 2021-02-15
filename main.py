@@ -73,6 +73,7 @@ def main():
         batch_size=BATCH_SIZE,
         )
     gan.generator.load_state_dict(torch.load(os.path.join("results","checkpoints","gen.01049.pt")))
+    gan.encoder.load_state_dict(torch.load(os.path.join("results","checkpoints","enc.01049.pt")))
     gan.discriminator_image.load_state_dict(torch.load(os.path.join("results","checkpoints","dis_i.01049.pt")))
     gan.discriminator_latent.load_state_dict(torch.load(os.path.join("results","checkpoints","dis_l.01049.pt")))
     start = time.time()
@@ -100,6 +101,9 @@ def main():
                 os.path.join("results", "checkpoints", f"dis_i.{i:05d}.pt"))
             torch.save(
                 gan.discriminator_latent.state_dict(),
+                os.path.join("results", "checkpoints", f"dis_l.{i:05d}.pt"))
+            torch.save(
+                gan.encoder.state_dict(),
                 os.path.join("results", "checkpoints", f"dis_l.{i:05d}.pt"))
         save_images(gan, test_noise,
             os.path.join("results", "generated", f"gen.{i:04d}.png"))
